@@ -17,6 +17,8 @@ spec:
       type: string
     - name: IMAGE
       type: string
+    - name: IMAGE_SCRIPTS_URL
+      type: string
     - name: TLS_VERIFY
       type: string
     - name: VERBOSE
@@ -51,6 +53,8 @@ spec:
       params:
         - name: IMAGE
           value: "$(params.IMAGE)"
+        - name: IMAGE_SCRIPTS_URL
+          value: "$(params.IMAGE_SCRIPTS_URL)"
         - name: TLS_VERIFY
           value: "$(params.TLS_VERIFY)"
         - name: VERBOSE

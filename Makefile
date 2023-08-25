@@ -60,6 +60,9 @@ E2E_S2I_PARAMS_REVISION ?= master
 # s2i end-to-end test language of choice for using correct builder image
 E2E_S2I_LANGUAGE ?= python
 
+# s2i's "image-script-url" flag for container-file generation
+E2E_S2I_IMAGE_SCRIPTS_URL ?= image:///usr/libexec/s2i
+
 # s2i end-to-end test pipeline params adding env variables as a comma-separated string
 E2E_S2I_PARAMS_ENV_VARS ?= 
 
@@ -187,6 +190,16 @@ test-e2e-s2i-dotnet: E2E_S2I_PARAMS_URL = https://github.com/biswajitpanday/Clea
 test-e2e-s2i-dotnet: E2E_S2I_PARAMS_REVISION = main
 test-e2e-s2i-dotnet: E2E_S2I_PARAMS_ENV_VARS = DOTNET_STARTUP_PROJECT=CleanArchitecture.Api/CleanArchitecture.Api.csproj
 test-e2e-s2i-dotnet: test-e2e-s2i
+
+# runs the end-to-end tests for s2i-java
+.PHONY: test-e2e-s2i-java
+test-e2e-s2i-java: prepare-e2e-s2i
+test-e2e-s2i-java: E2E_S2I_LANGUAGE = java
+test-e2e-s2i-java: E2E_S2I_IMAGE_TAG = task-s2i-java:latest
+test-e2e-s2i-java: E2E_S2I_PARAMS_URL = https://github.com/HouariZegai/Calculator.git 
+test-e2e-s2i-java: E2E_S2I_PARAMS_ENV_VARS = MAVEN_CLEAR_REPO=false,MAVEN_ARGS_APPEND="",MAVEN_MIRROR_URL=""
+test-e2e-s2i-java: E2E_S2I_IMAGE_SCRIPTS_URL = image:///usr/local/s2i 
+test-e2e-s2i-java: test-e2e-s2i
 
 # runs the end-to-end tests for s2i
 .PHONY: test-e2e-s2i

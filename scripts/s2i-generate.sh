@@ -13,6 +13,8 @@ source "$(dirname ${BASH_SOURCE[0]})/s2i-common.sh"
 # s2i builder image name (fully qualified)
 declare -rx S2I_BUILDER_IMAGE="${S2I_BUILDER_IMAGE:-}"
 
+declare -rx IMAGE_SCRIPTS_URL="${PARAMS_IMAGE_SCRIPTS_URL:-}"
+
 # takes the values in argument ENV_VARS and creates an array using those values
 declare -ra ENV_VARS=(${@})
 
@@ -51,6 +53,7 @@ fi
 phase "Generating the Containerfile for S2I builder image '${S2I_BUILDER_IMAGE}'"
 s2i --loglevel "${S2I_LOGLEVEL}" \
     build "${PARAMS_SUBDIRECTORY}" "${S2I_BUILDER_IMAGE}" \
+        --image-scripts-url "${IMAGE_SCRIPTS_URL}" \
         --as-dockerfile "${S2I_CONTAINERFILE_PATH}" \
         --environment-file "${S2I_ENVIRONMENT_FILE}"
 

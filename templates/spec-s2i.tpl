@@ -19,6 +19,11 @@ params:
     type: string
     description: |
       Fully qualified container image name to be built by s2i.
+  - name: IMAGE_SCRIPTS_URL
+    type: string
+    default: image:///usr/libexec/s2i         
+    description: |
+      Specify a URL containing the default assemble and run scripts for the builder image
   - name: ENV_VARS
     type: array
     default: []
@@ -35,6 +40,7 @@ stepTemplate:
   env:
 {{- $variables := list
       "params.IMAGE"
+      "params.IMAGE_SCRIPTS_URL"
       "params.SUBDIRECTORY"
       "params.STORAGE_DRIVER"
       "params.BUILD_EXTRA_ARGS"

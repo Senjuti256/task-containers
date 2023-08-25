@@ -10,6 +10,7 @@ declare -rx E2E_S2I_PARAMS_URL="${E2E_S2I_PARAMS_URL:-}"
 declare -rx E2E_S2I_PARAMS_REVISION="${E2E_S2I_PARAMS_REVISON:-}"
 declare -rx E2E_S2I_PARAMS_IMAGE="${E2E_S2I_PARAMS_IMAGE:-}"
 declare -rx E2E_S2I_LANGUAGE="${E2E_S2I_LANGUAGE:-}"
+declare -rx E2E_S2I_IMAGE_SCRIPTS_URL="${E2E_S2I_IMAGE_SCRIPTS_URL:-}"
 declare -rx E2E_S2I_PARAMS_ENV_VARS="${E2E_S2I_PARAMS_ENV_VARS:-}"
 
 @test "[e2e] pipeline-run using s2i task" {
@@ -18,6 +19,7 @@ declare -rx E2E_S2I_PARAMS_ENV_VARS="${E2E_S2I_PARAMS_ENV_VARS:-}"
     [ -n "${E2E_S2I_PARAMS_URL}" ]
     [ -n "${E2E_S2I_PARAMS_REVISION}" ]
     [ -n "${E2E_S2I_PARAMS_IMAGE}" ]
+    [ -n "${E2E_S2I_IMAGE_SCRIPTS_URL}" ]
     [ -n "${E2E_PARAMS_TLS_VERIFY}" ]
     [ -n "${E2E_S2I_LANGUAGE}" ]
 
@@ -68,6 +70,7 @@ EOF
 
     tkn pipeline start task-s2i-${E2E_S2I_LANGUAGE} \
         --param="URL=${E2E_S2I_PARAMS_URL}" \
+        --param="IMAGE_SCRIPTS_URL=${E2E_S2I_IMAGE_SCRIPTS_URL}" \
         --param="REVISION=${E2E_S2I_PARAMS_REVISION}" \
         --param="IMAGE=${E2E_S2I_PARAMS_IMAGE}" \
         --param="TLS_VERIFY=${E2E_PARAMS_TLS_VERIFY}" \
