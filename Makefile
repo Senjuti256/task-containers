@@ -197,7 +197,7 @@ test-e2e-s2i-java: prepare-e2e-s2i
 test-e2e-s2i-java: E2E_S2I_LANGUAGE = java
 test-e2e-s2i-java: E2E_S2I_IMAGE_TAG = task-s2i-java:latest
 test-e2e-s2i-java: E2E_S2I_PARAMS_URL = https://github.com/shashirajraja/shopping-cart 
-test-e2e-s2i-java: E2E_S2I_PARAMS_ENV_VARS = MAVEN_CLEAR_REPO=false,MAVEN_OPTS=-Dmaven.artifact.threads=3,MAVEN_BUILD_ARGS=-DskipTests,MAVEN_ARGS=clean install
+test-e2e-s2i-java: E2E_S2I_PARAMS_ENV_VARS = MAVEN_CLEAR_REPO=false 
 test-e2e-s2i-java: E2E_S2I_IMAGE_SCRIPTS_URL = image:///usr/local/s2i
 test-e2e-s2i-java: test-e2e-s2i
 
