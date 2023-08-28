@@ -1,0 +1,18 @@
+{{- $s2iBuilderImage := .Values.s2iBuilders.java -}}
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: s2i-java
+  labels:
+    app.kubernetes.io/version: {{ .Chart.Version }}
+{{- if .Values.annotations }}
+  annotations:
+  {{- .Values.annotations | toYaml | nindent 4 }}
+{{- end }}
+spec:
+  description: |
+    Builds the source code using the s2i's Java builder-image
+    {{ $s2iBuilderImage | quote }}.
+
+{{ include "spec_s2i" ( list . $s2iBuilderImage ) | nindent 2 }}
