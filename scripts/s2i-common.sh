@@ -3,6 +3,7 @@
 # target image name (fully qualified) to be build with s2i, redeclaring the same parameter name than
 # buildah task uses
 declare -x PARAMS_IMAGE="${PARAMS_IMAGE:-}"
+# Specify a URL containing the default assemble and run scripts for the builder image
 declare -rx PARAMS_IMAGE_SCRIPTS_URL="${PARAMS_IMAGE_SCRIPTS_URL:-}"
 
 # volume mount or directory responsible for holding files 

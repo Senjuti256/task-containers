@@ -16,7 +16,6 @@ s2iBuilders:
   nodejs: registry.access.redhat.com/ubi8/nodejs-18:latest
   php: registry.access.redhat.com/ubi9/php-81:1-29
   dotnet: registry.access.redhat.com/ubi8/dotnet-60:6.0-37.20230802191230
-  java: registry.access.redhat.com/ubi8/openjdk-11:latest
 
 annotations:
   tekton.dev/pipelines.minVersion: "0.38.0"
