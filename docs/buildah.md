@@ -3,7 +3,7 @@
 
 # Abstract
 
-The `buildah` Task is meant to build [OCI][OCI] container images without the requirement of container runtime daemon like Docker daemon using [Buildah[containersBuildah], the Task results contain the image name and the SHA256 image digest.
+The `buildah` Task is meant to build [OCI][OCI] container images without the requirement of container runtime daemon like Docker daemon using [Buildah][Buildah], the Task results contain the image name and the SHA256 image digest.
 
 # Usage
 
@@ -71,6 +71,6 @@ Then make sure the Secret is linked with the Service-Account running the `TaskRu
 | `IMAGE_DIGEST` | SHA256 digest of the image just built. |
 
 [tektonPipelineAuth]: https://tekton.dev/docs/pipelines/auth/#configuring-docker-authentication-for-docker
-[containersBuildah]: https://github.com/containers/buildah
+[Buildah]: https://github.com/containers/buildah
 [OCI]: https://opencontainers.org/
 
